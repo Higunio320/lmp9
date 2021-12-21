@@ -21,10 +21,15 @@ int main(int argc, char ** argv) {
 	if (x != NULL) {
 		res = backsubst(x,A,b);
 
-		printToScreen(x);
+		if(res == 0)
+			printToScreen(x);
+		else if(res == 1)
+			fprintf(stderr,"Dzielenie przez 0...\n");
+		else if(res == 2)
+			fprintf(stderr, "Zle rozmiary macierzy...\n");
 	  freeMatrix(x);
 	} else {
-					fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
+		fprintf(stderr,"Błąd! Nie mogłem utworzyć wektora wynikowego x.\n");
 	}
 
 	freeMatrix(A);
